@@ -56,8 +56,6 @@ class Song
           song 
         end 
   end 
-      # the .create method calls on .save method which saves the instance to @@all
-      #.save method eliminates the need for @@all << self on initialize
   
   def self.new_from_filename(filename)
     song_name = filename.split(" - ")[1]
@@ -72,10 +70,14 @@ class Song
 
   def self.create_from_filename(filename)
      new_from_filename(filename).tap {|s| s.save}
+     #called on by the importer - then calls new_from_filename to format the filename correctly and create new instances as needed
   end 
 
-end  
-  
+end
+
+
+  # the .create method calls on .save method which saves the instance to @@all
+  #.save method eliminates the need for @@all << self on initialize
   #   new_from_filename, which instantiates a new Song object based on a provided filename.
   # .create_from_filename, which does the same thing as .new_from_filename but also saves the newly-created song
   # to the @@all class variable.

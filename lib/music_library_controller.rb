@@ -41,6 +41,7 @@ class MusicLibraryController
         puts "#{index+1}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
       end 
     end 
+    #sorts the class var all for Songs first, then iterates through putting them out in required order
     
     def list_artists
       a_sorted = Artist.all.uniq.sort {|a,b| a.name <=> b.name}
@@ -48,6 +49,9 @@ class MusicLibraryController
         puts "#{index}. #{artist.name}"
       end 
     end 
+    #sorting the class var all for Artist class 
+    #using .each.with_index instead of .each_with_index, specifiing the index number to begin with, then iterating through
+    #to puts out the required info 
    
    def list_genres
      g_sorted = Genre.all.uniq.sort {|a,b| a.name <=> b.name}
@@ -87,5 +91,7 @@ class MusicLibraryController
     end
      puts "Playing #{song.name} by #{song.artist.name}" if song
     end
-   
+   #if range of 1 through songs var length is included in the passed in input, then sort the class var all for Song setting the sorted
+   #list equal to new var song and setting the index val to the val of input -1. Then puts out the required list if
+   #the song var was created (the input was included in the range of 1..songs.length) 
 end 
